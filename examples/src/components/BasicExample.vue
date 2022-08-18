@@ -23,7 +23,7 @@
 <script lang="ts">
 import { Splide as Core } from '@splidejs/splide';
 import { Splide, SplideSlide } from '@splidejs/vue-splide'
-import { defineComponent, ref } from 'vue';
+import { defineComponent, ref } from '@vue/composition-api';
 import { generateSlides } from '../utils';
 
 

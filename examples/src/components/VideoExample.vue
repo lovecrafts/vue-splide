@@ -20,7 +20,7 @@
 <script lang="ts">
 import { Splide, SplideSlide } from '@splidejs/vue-splide';
 import { Video } from '@splidejs/splide-extension-video';
-import { defineComponent } from 'vue';
+import { defineComponent } from '@vue/composition-api';
 import '@splidejs/splide-extension-video/dist/css/splide-extension-video.min.css';
 
 

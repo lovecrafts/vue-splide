@@ -1,6 +1,12 @@
 "use strict";
 Object.defineProperties(exports, { __esModule: { value: true }, [Symbol.toStringTag]: { value: "Module" } });
-var vue = require("vue");
+var VueCompositionAPI = require("@vue/composition-api");
+var Vue = require("vue");
+function _interopDefaultLegacy(e) {
+  return e && typeof e === "object" && "default" in e ? e : { "default": e };
+}
+var VueCompositionAPI__default = /* @__PURE__ */ _interopDefaultLegacy(VueCompositionAPI);
+var Vue__default = /* @__PURE__ */ _interopDefaultLegacy(Vue);
 function _defineProperties(target, props) {
   for (var i = 0; i < props.length; i++) {
     var descriptor = props[i];
@@ -2599,36 +2605,91 @@ function merge(object, source) {
   });
   return merged;
 }
-var _export_sfc = (sfc, props) => {
-  const target = sfc.__vccOpts || sfc;
-  for (const [key, val] of props) {
-    target[key] = val;
-  }
-  return target;
-};
-const _sfc_main$2 = vue.defineComponent({
+var __vue2_script$2 = VueCompositionAPI.defineComponent({
   name: "SplideTrack",
   setup() {
-    vue.onUpdated(() => {
+    VueCompositionAPI.onUpdated(() => {
       var _a;
-      const splide = vue.inject(SPLIDE_INJECTION_KEY);
+      const splide = VueCompositionAPI.inject(SPLIDE_INJECTION_KEY);
       (_a = splide == null ? void 0 : splide.value) == null ? void 0 : _a.refresh();
     });
   }
 });
-const _hoisted_1$1 = { class: "splide__track" };
-const _hoisted_2 = { class: "splide__list" };
-function _sfc_render$2(_ctx, _cache, $props, $setup, $data, $options) {
-  return vue.openBlock(), vue.createElementBlock("div", _hoisted_1$1, [
-    vue.createElementVNode("ul", _hoisted_2, [
-      vue.renderSlot(_ctx.$slots, "default")
-    ])
-  ]);
+var render$2 = function __render__() {
+  var _vm = this;
+  var _h = _vm.$createElement;
+  var _c = _vm._self._c || _h;
+  return _c("div", {
+    staticClass: "splide__track"
+  }, [_c("ul", {
+    staticClass: "splide__list"
+  }, [_vm._t("default")], 2)]);
+};
+var staticRenderFns$2 = [];
+function normalizeComponent(scriptExports, render2, staticRenderFns2, functionalTemplate, injectStyles, scopeId, moduleIdentifier, shadowMode) {
+  var options = typeof scriptExports === "function" ? scriptExports.options : scriptExports;
+  if (render2) {
+    options.render = render2;
+    options.staticRenderFns = staticRenderFns2;
+    options._compiled = true;
+  }
+  if (functionalTemplate) {
+    options.functional = true;
+  }
+  if (scopeId) {
+    options._scopeId = "data-v-" + scopeId;
+  }
+  var hook;
+  if (moduleIdentifier) {
+    hook = function(context) {
+      context = context || this.$vnode && this.$vnode.ssrContext || this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext;
+      if (!context && typeof __VUE_SSR_CONTEXT__ !== "undefined") {
+        context = __VUE_SSR_CONTEXT__;
+      }
+      if (injectStyles) {
+        injectStyles.call(this, context);
+      }
+      if (context && context._registeredComponents) {
+        context._registeredComponents.add(moduleIdentifier);
+      }
+    };
+    options._ssrRegister = hook;
+  } else if (injectStyles) {
+    hook = shadowMode ? function() {
+      injectStyles.call(this, (options.functional ? this.parent : this).$root.$options.shadowRoot);
+    } : injectStyles;
+  }
+  if (hook) {
+    if (options.functional) {
+      options._injectStyles = hook;
+      var originalRender = options.render;
+      options.render = function renderWithStyleInjection(h, context) {
+        hook.call(context);
+        return originalRender(h, context);
+      };
+    } else {
+      var existing = options.beforeCreate;
+      options.beforeCreate = existing ? [].concat(existing, hook) : [hook];
+    }
+  }
+  return {
+    exports: scriptExports,
+    options
+  };
 }
-var SplideTrack = /* @__PURE__ */ _export_sfc(_sfc_main$2, [["render", _sfc_render$2]]);
-const _sfc_main$1 = vue.defineComponent({
+const __cssModules$2 = {};
+var __component__$2 = /* @__PURE__ */ normalizeComponent(__vue2_script$2, render$2, staticRenderFns$2, false, __vue2_injectStyles$2, null, null, null);
+function __vue2_injectStyles$2(context) {
+  for (let o in __cssModules$2) {
+    this[o] = __cssModules$2[o];
+  }
+}
+var SplideTrack = /* @__PURE__ */ function() {
+  return __component__$2.exports;
+}();
+Vue__default["default"].use(VueCompositionAPI__default["default"]);
+var __vue2_script$1 = VueCompositionAPI.defineComponent({
   name: "Splide",
-  emits: EVENTS.map((event) => `splide:${event}`),
   components: { SplideTrack },
   props: {
     tag: {
@@ -2647,30 +2708,30 @@ const _sfc_main$1 = vue.defineComponent({
     }
   },
   setup(props, context) {
-    const splide = vue.ref();
-    const root = vue.ref();
-    vue.onMounted(() => {
+    const splide = VueCompositionAPI.ref();
+    const root = VueCompositionAPI.ref();
+    VueCompositionAPI.onMounted(() => {
       if (root.value) {
         splide.value = new Splide$1(root.value, props.options);
         bind(splide.value);
         splide.value.mount(props.extensions, props.transition);
       }
     });
-    vue.onBeforeUnmount(() => {
+    VueCompositionAPI.onBeforeUnmount(() => {
       var _a;
       (_a = splide.value) == null ? void 0 : _a.destroy();
     });
-    vue.watch(() => merge({}, props.options), (options) => {
+    VueCompositionAPI.watch(() => merge({}, props.options), (options) => {
       if (splide.value) {
         splide.value.options = options;
       }
     }, { deep: true });
-    vue.provide(SPLIDE_INJECTION_KEY, splide);
-    const index = vue.computed(() => {
+    VueCompositionAPI.provide(SPLIDE_INJECTION_KEY, splide);
+    const index = VueCompositionAPI.computed(() => {
       var _a;
       return ((_a = splide.value) == null ? void 0 : _a.index) || 0;
     });
-    const length = vue.computed(() => {
+    const length = VueCompositionAPI.computed(() => {
       var _a;
       return ((_a = splide.value) == null ? void 0 : _a.length) || 0;
     });
@@ -2699,36 +2760,52 @@ const _sfc_main$1 = vue.defineComponent({
     };
   }
 });
-function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
-  const _component_SplideTrack = vue.resolveComponent("SplideTrack");
-  return vue.openBlock(), vue.createBlock(vue.resolveDynamicComponent(_ctx.tag), {
-    class: "splide",
-    ref: "root"
-  }, {
-    default: vue.withCtx(() => [
-      _ctx.hasTrack ? (vue.openBlock(), vue.createBlock(_component_SplideTrack, { key: 0 }, {
-        default: vue.withCtx(() => [
-          vue.renderSlot(_ctx.$slots, "default")
-        ]),
-        _: 3
-      })) : vue.renderSlot(_ctx.$slots, "default", { key: 1 })
-    ]),
-    _: 3
-  }, 512);
+var render$1 = function __render__2() {
+  var _vm = this;
+  var _h = _vm.$createElement;
+  var _c = _vm._self._c || _h;
+  return _c(_vm.tag, {
+    ref: "root",
+    tag: "component",
+    staticClass: "splide"
+  }, [_vm.hasTrack ? _c("SplideTrack", [_vm._t("default")], 2) : _vm._t("default")], 2);
+};
+var staticRenderFns$1 = [];
+const __cssModules$1 = {};
+var __component__$1 = /* @__PURE__ */ normalizeComponent(__vue2_script$1, render$1, staticRenderFns$1, false, __vue2_injectStyles$1, null, null, null);
+function __vue2_injectStyles$1(context) {
+  for (let o in __cssModules$1) {
+    this[o] = __cssModules$1[o];
+  }
 }
-var Splide = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["render", _sfc_render$1]]);
-const _sfc_main = vue.defineComponent({
+var Splide = /* @__PURE__ */ function() {
+  return __component__$1.exports;
+}();
+var __vue2_script = VueCompositionAPI.defineComponent({
   name: "SplideSlide"
 });
-const _hoisted_1 = { class: "splide__slide" };
-function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
-  return vue.openBlock(), vue.createElementBlock("li", _hoisted_1, [
-    vue.renderSlot(_ctx.$slots, "default")
-  ]);
+var render = function __render__3() {
+  var _vm = this;
+  var _h = _vm.$createElement;
+  var _c = _vm._self._c || _h;
+  return _c("li", {
+    staticClass: "splide__slide"
+  }, [_vm._t("default")], 2);
+};
+var staticRenderFns = [];
+const __cssModules = {};
+var __component__ = /* @__PURE__ */ normalizeComponent(__vue2_script, render, staticRenderFns, false, __vue2_injectStyles, null, null, null);
+function __vue2_injectStyles(context) {
+  for (let o in __cssModules) {
+    this[o] = __cssModules[o];
+  }
 }
-var SplideSlide = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render]]);
+var SplideSlide = /* @__PURE__ */ function() {
+  return __component__.exports;
+}();
 const VueSplide = {
   install(app) {
+    app.use(VueCompositionAPI__default["default"]);
     app.component(Splide.name, Splide);
     app.component(SplideSlide.name, SplideSlide);
   }

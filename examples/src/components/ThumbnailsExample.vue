@@ -26,7 +26,7 @@
 
 <script lang="ts">
 import { Splide, SplideSlide, Options } from '@splidejs/vue-splide';
-import { defineComponent, onMounted, ref } from 'vue';
+import { defineComponent, onMounted, ref } from '@vue/composition-api';
 import { generateSlides } from '../utils';
 
 

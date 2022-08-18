@@ -1,5 +1,5 @@
 import { defineConfig } from 'vite';
-import vue from '@vitejs/plugin-vue';
+import { createVuePlugin } from 'vite-plugin-vue2';
 
 
 export default defineConfig( {
@@ -23,7 +23,7 @@ export default defineConfig( {
 			include: 'src/**'
 		},
     rollupOptions: {
-      external: [ 'vue' ],
+      external: [ 'vue', '@vue/composition-api' ],
       output: {
         globals: {
           vue: 'Vue',
@@ -33,5 +33,8 @@ export default defineConfig( {
     },
     minify: false,
 	},
-  plugins: [ vue() ],
+  plugins: [ createVuePlugin() ],
+  define: {
+    'process.env': {}
+  }
 } );

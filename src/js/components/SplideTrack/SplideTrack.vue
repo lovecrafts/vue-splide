@@ -7,7 +7,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, onUpdated, inject, Ref } from 'vue';
+import { defineComponent, onUpdated, inject, Ref } from '@vue/composition-api';
 import { SPLIDE_INJECTION_KEY } from '../../constants/keys';
 import { Splide } from '@splidejs/splide';
 

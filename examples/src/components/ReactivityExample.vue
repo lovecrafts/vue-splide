@@ -21,7 +21,7 @@
           min="5"
           max="20"
           :value="typeof options.height === 'string' ? parseInt( options.height ) : 5"
-          @input="onHeightChange"
+          @input="onHeightChange($event)"
         />
         rem
       </label>
@@ -37,7 +37,7 @@
 
 <script lang="ts">
 import { Options, Splide, SplideSlide } from '@splidejs/vue-splide';
-import { defineComponent, reactive, ref } from 'vue';
+import { defineComponent, reactive, ref } from '@vue/composition-api';
 import { generateSlides } from '../utils';
 
 

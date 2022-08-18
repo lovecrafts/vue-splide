@@ -1,18 +1,20 @@
 <template>
-  <BasicExample />
-  <hr>
-  <AutoplayExample />
-  <hr>
-  <ReactivityExample />
-  <hr>
-  <DynamicSlidesExample />
-  <hr>
-  <ThumbnailsExample />
-  <hr>
-  <VideoExample />
+  <div>
+    <BasicExample />
+    <hr>
+    <AutoplayExample />
+    <hr>
+    <ReactivityExample />
+    <hr>
+    <DynamicSlidesExample />
+    <hr>
+    <ThumbnailsExample />
+    <hr>
+    <VideoExample />
+  </div>
 </template>
 
-<script setup lang="ts">
+<script lang="ts">
 import AutoplayExample from './components/AutoplayExample.vue';
 import BasicExample from './components/BasicExample.vue';
 import DynamicSlidesExample from './components/DynamicSlideExample.vue';
@@ -20,6 +22,17 @@ import ReactivityExample from './components/ReactivityExample.vue';
 import ThumbnailsExample from './components/ThumbnailsExample.vue';
 import VideoExample from './components/VideoExample.vue';
 import '@splidejs/vue-splide/css';
+
+export default {
+  components: {
+    AutoplayExample,
+    BasicExample,
+    DynamicSlidesExample,
+    ReactivityExample,
+    ThumbnailsExample,
+    VideoExample
+  }
+}
 </script>
 
 <style>

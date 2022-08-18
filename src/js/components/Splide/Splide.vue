@@ -10,12 +10,15 @@
 
 <script lang="ts">
 import { ComponentConstructor, Options, Splide } from '@splidejs/splide';
-import { computed, defineComponent, onBeforeUnmount, onMounted, PropType, provide, Ref, ref, watch } from 'vue';
+import { computed, ref, watch, onMounted, defineComponent, onBeforeUnmount, provide, PropType, Ref } from '@vue/composition-api';
 import { EVENTS } from '../../constants/events';
 import { SPLIDE_INJECTION_KEY } from '../../constants/keys';
 import { merge } from '../../utils';
 import SplideTrack from '../SplideTrack/SplideTrack.vue';
+import VueCompositionAPI from '@vue/composition-api';
+import Vue from 'vue';
 
+Vue.use(VueCompositionAPI);
 
 /**
  * The component for the Splide root element.
@@ -24,7 +27,6 @@ import SplideTrack from '../SplideTrack/SplideTrack.vue';
  */
 export default defineComponent( {
   name: 'Splide',
-  emits: EVENTS.map( event => `splide:${ event }` ),
   components: { SplideTrack },
 
   props: {
@@ -141,5 +143,5 @@ export default defineComponent( {
       sync,
     }
   },
-} );
+});
 </script>
