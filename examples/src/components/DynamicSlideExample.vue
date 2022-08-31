@@ -26,7 +26,7 @@
 
 <script lang="ts">
 import { Options, Splide, SplideSlide, SplideTrack } from '@splidejs/vue-splide';
-import { defineComponent, ref } from 'vue';
+import { defineComponent, ref } from '@vue/composition-api';
 import { generateSlides } from '../utils';
 
 
@@ -54,7 +54,8 @@ export default defineComponent( {
     }
 
     function remove(): void {
-      --slides.value.length;
+      // https://v2.vuejs.org/v2/guide/reactivity.html#For-Arrays
+      slides.value.splice(-1);
     }
 
     return {

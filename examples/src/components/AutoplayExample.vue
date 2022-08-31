@@ -30,7 +30,7 @@
 
 <script lang="ts">
 import { Splide, SplideSlide, SplideTrack, Options } from '@splidejs/vue-splide';
-import { defineComponent } from 'vue';
+import { defineComponent } from '@vue/composition-api';
 import { generateSlides } from '../utils';
 
 export default defineComponent( {

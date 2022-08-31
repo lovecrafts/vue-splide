@@ -1,11 +1,11 @@
 import { defineConfig } from 'vite';
-import vue from '@vitejs/plugin-vue';
+import { createVuePlugin } from 'vite-plugin-vue2';
 import path from 'path';
 
 
 export default defineConfig( {
   base: './',
-	plugins: [ vue() ],
+  plugins: [ createVuePlugin() ],
   resolve: {
     alias: [
       { find: 'vue', replacement: path.resolve( './node_modules/vue' ) },
